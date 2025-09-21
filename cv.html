@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Alex Carter</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #b4b4b4;
+    }
+
+    .cv-section {
+      display: flex;
+      align-items: stretch;
+      margin: 40px auto;
+      max-width: 1000px;
+      background-color: #2c2c2c;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      color: white;
+    }
+
+    .cv-left {
+      background: #fd4343;
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 20px 20px;
+    }
+
+    .cv-left img {
+      width: 80%;
+      max-width: 200px;
+      border-radius: 50%;
+      border: 8px solid #ff7474;
+      margin: 0 auto 10px auto;
+      display: block;
+    }
+
+    .cv-left h3, .cv-left h4 {
+      margin: 10px 0 4px 0;
+      align-self: flex-start;
+    }
+
+    .cv-left hr {
+      width: 100%;
+      border: 1.5px solid #fff;
+      margin: 0 0 10px 0;
+      align-self: flex-start;
+    }
+
+    .cv-left p {
+      text-align: left;
+      margin: 6px 0;
+      width: 100%;
+    }
+
+    .cv-right {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .cv-right h2 {
+      margin-bottom: 50px;
+    }
+
+    .cv-right p {
+      text-align: justify;
+    }
+
+    .cv-right hr {
+      width: 100%;
+      border: 1.5px solid #fff;
+      margin: 0 0 10px 0;
+      align-self: flex-start;
+    }
+
+    /* Sosial Media */
+    .social-media {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .social-media a {
+      color: white;
+      font-size: 28px;
+      margin: 0 10px;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    .social-media a:hover {
+      transform: scale(1.2);
+    }
+
+    .social-media a:hover i.fa-instagram {
+      color: #E1306C;
+    }
+
+    .social-media a:hover i.fa-linkedin {
+      color: #0A66C2;
+    }
+
+    .social-media a:hover i.fa-x-twitter {
+      color: #1DA1F2;
+    }
+
+    @media (max-width: 700px) {
+      .cv-section {
+        flex-direction: column;
+      }
+      .cv-left {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+      }
+      .cv-left img {
+        width: 100px;
+        margin: 0 0 10px 0;
+      }
+      .cv-left h3,
+      .cv-left hr,
+      .cv-left p {
+        text-align: center;
+        align-self: center;
+      }
+    }
+
+    a.back-btn {
+      display: inline-block;
+      margin: 20px;
+      text-decoration: none;
+      background: #fd4343;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 8px;
+      transition: 0.3s ease;
+    }
+    a.back-btn:hover {
+      background: #ff7474;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back-btn">← Back</a>
+
+  <section class="cv-section">
+    <div class="cv-left">
+      <img src="assets/photo_fiktif.jpg" alt="Foto Alex Carter">
+      <h3>Contact</h3>
+      <hr>
+      <p>Email: alex.carter@example.com</p>
+      <p>Phone: +1 555-123-4567</p>
+      <h3>Education</h3>
+      <hr>
+      <h4>MIT - Computer Science</h4>
+      <p>2018 - 2022</p>
+      <h4>Stanford Online</h4>
+      <p>Machine Learning (2023)</p>
+      <h3>Skills</h3>
+      <hr>
+      <h4>Hard Skills</h4>
+      <ul class="strength-list">
+        <li>Game Development (Unity, Unreal)</li>
+        <li>Web Development</li>
+        <li>Machine Learning</li>
+      </ul>
+      <h4>Soft Skills</h4>
+      <ul class="strength-list">
+        <li>Leadership</li>
+        <li>Teamwork</li>
+        <li>Problem Solving</li>
+        <li>Creativity</li>
+      </ul>
+      <h3>Languages</h3>
+      <hr>
+      <p>English</p>
+      <p>Spanish</p>
+      <p>Japanese (Conversational)</p>
+    </div>
+    <div class="cv-right">
+      <h1>Hello!</h1>
+      <h2>I am Alex Carter</h2>
+      <h3>About Me</h3>
+      <hr>
+      <p>
+      I am a passionate Game Developer and Content Creator with a strong love for 
+      building interactive experiences. I enjoy combining technology and storytelling 
+      to create games that inspire and entertain. When I am not coding, I love 
+      mentoring new developers, speaking at tech events, and sharing insights 
+      about game design on my YouTube channel.
+      </p>
+      <br>
+      <h3>Experience</h3>
+      <hr>
+      <h4>Lead Game Developer - Indie Studio</h4>
+      <p>2022 - Present</p>
+      <ul>
+        <li>Developed award-winning indie game with 1M+ downloads</li>
+        <li>Led a team of 5 developers and artists</li>
+      </ul>
+      <h4>Open-Source Contributor</h4>
+      <p>2020 - Present</p>
+      <ul>
+        <li>Active contributor in Godot Engine project</li>
+        <li>Maintainer of open-source AI toolkit</li>
+      </ul>
+      <br>
+      <h3>Training</h3>
+      <hr>
+      <ul>
+        <li>Game Design Workshop - GDC 2023</li>
+        <li>Unity Certified Programmer (2022)</li>
+        <li>AI for Games Course - Coursera</li>
+      </ul>
+
+      <!-- Social Media -->
+      <div class="social-media">
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-x-twitter"></i></a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
