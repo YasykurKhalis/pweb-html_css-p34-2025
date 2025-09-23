@@ -15,7 +15,8 @@
             --text: #111b29;
             --accent-1: #111b29;
             --accent-2: #ffffff;
-            --accent-3: #d90429; /* Ferrari Red */
+            --accent-3: #d90429;
+            /* Ferrari Red */
             --font-size: 18px;
         }
 
@@ -28,6 +29,80 @@
         body {
             background: var(--background);
             color: var(--text);
+        }
+
+        /* == HEADER == */
+        .header {
+            height: 72px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 16px;
+            padding: 0 24px;
+            white-space: nowrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--background);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+
+        .header-title {
+            font-size: var(--font-size);
+            font-weight: 800;
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-self: end;
+            background: var(--accent-2);
+            padding: 6px 6px;
+            border-radius: 12px;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .navigation a {
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--accent-1);
+            font-size: 14px;
+            position: relative;
+            padding: 2px 12px;
+            border-radius: 6px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .navigation a:hover {
+            background: var(--accent-3);
+            color: var(--accent-2);
+        }
+
+        .navigation a[aria-current="page"] {
+            background: var(--accent-3);
+            color: var(--accent-2);
+        }
+
+        .navigation-dropdown-toggle {
+            display: none;
+        }
+
+        .navigation-hamburger {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.3s ease;
+            color: var(--accent-1);
+            grid-column: 3;
+            justify-self: end;
+            align-self: center;
         }
 
         .cv-section {
@@ -123,6 +198,42 @@
             color: #1DA1F2;
         }
 
+        @media (max-width: 600px) {
+            .navigation {
+                display: none;
+                flex-direction: column;
+                background: var(--accent-2);
+                padding: 10px;
+                border-radius: 12px;
+                position: absolute;
+                top: 60px;
+                right: 12px;
+                width: 120px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+                z-index: 1;
+            }
+
+            .navigation a {
+                display: block;
+                padding: 4px 12px;
+                width: 100%;
+            }
+
+            .navigation-hamburger {
+                display: block;
+                justify-self: end;
+            }
+
+            .navigation-dropdown-toggle:checked+.navigation-hamburger+.navigation {
+                display: flex;
+                animation: fadeIn 0.3s ease-in-out;
+            }
+
+            .navigation-dropdown-toggle:checked+.navigation-hamburger {
+                color: var(--accent-3);
+            }
+        }
+
         @media (max-width: 700px) {
             .cv-section {
                 flex-direction: column;
@@ -146,6 +257,18 @@
                 align-self: center;
             }
         }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
@@ -154,6 +277,11 @@
         <div class="header-title">
             Pemweb Kelompok P34
         </div>
+
+        <input type="checkbox" id="navigation-dropdown-toggle" class="navigation-dropdown-toggle">
+        <label for="navigation-dropdown-toggle" class="navigation-hamburger">
+            ☰
+        </label>
 
         <nav class="navigation" aria-label="Primary">
             <a href="index.html">Home</a>
@@ -218,7 +346,8 @@
             <!-- Social Media -->
             <div class="social-media">
                 <a href="https://www.instagram.com/charles_leclerc" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/charles-leclerc" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.linkedin.com/in/charles-leclerc" target="_blank"><i
+                        class="fab fa-linkedin"></i></a>
                 <a href="https://twitter.com/Charles_Leclerc" target="_blank"><i class="fab fa-x-twitter"></i></a>
             </div>
         </div>
