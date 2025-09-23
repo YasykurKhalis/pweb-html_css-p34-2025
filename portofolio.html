@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
+    <title>Portfolio Kelompok P34</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/milker" rel="stylesheet">
     <link rel="stylesheet" href="header.css">
@@ -16,42 +16,163 @@
             --accent-3: #D62929;
             --font-size: 18px;
         }
+
         * {
             box-sizing: border-box;
             margin: 0;
             font-family: 'Poppins', sans-serif;
         }
+
         body {
             background: var(--background);
             color: var(--text);
         }
 
-        /* == RESPONSIVE */
-        @media (max-width: 480px) {
-            :root {
-                --font-size: 14px;
-            }
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 24px;
         }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .intro h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 12px;
+        }
+
+        .intro p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: #555;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        .project-card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            object-fit: cover;
+        }
+
+        .project-card h3 {
+            margin-bottom: 8px;
+            color: var(--accent-3);
+        }
+
+        .project-card p {
+            flex: 1;
+            color: #555;
+            margin-bottom: 16px;
+        }
+
+        .project-card a {
+            text-decoration: none;
+            background: var(--accent-3);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .project-card a:hover {
+            background: #B71C1C;
+        }
+
+        /* === MODAL === */
+        .modal-toggle {
+            display: none;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            cursor: pointer;
+        }
+
+        .modal-content {
+            position: relative;
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 12px;
+            color: var(--accent-3);
+        }
+
+        .modal-content p {
+            margin-bottom: 16px;
+            color: #333;
+        }
+
+        .close-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--accent-3);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .modal-toggle:checked + .btn-modal + .modal,
+        .modal-toggle:checked + .btn-modal + .modal {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
         @media (max-width: 600px) {
-            :root {
-                --font-size: 15px;
-            }
-        }
-
-        @media (min-width: 481px) and (max-width: 768px) {
-            :root {
-                --font-size: 16px;
-            }
-        }
-
-        @media (min-width: 769px) and (max-width: 1024px) {
-            :root {
-                --font-size: 17px;
+            main {
+                padding: 0 16px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- HEADER -->
     <header class="header">
         <div class="header-title">
             Pemweb Kelompok P34
@@ -64,10 +185,42 @@
 
         <nav class="navigation" aria-label="Primary">
             <a href="index.html">Home</a>
-            <a href="portofolio.html" aria-current="page">Portofolio</a>
+            <a href="portfolio.html" aria-current="page">Portofolio</a>
             <a href="cv.html">CV</a>
             <a href="contact.html">Contact</a>
         </nav>
     </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- INTRO SECTION -->
+        <section class="intro">
+            <h1>Race Wins</h1>
+            <p>See some of Charles Leclerc glorious wins</p>
+        </section>
+
+        <!-- PROJECT GRID -->
+        <section class="projects">
+            <div class="project-card">
+                <img src="assets/race-win-1.jpg" alt="Race Win 1">
+                <h3>USA GP 2024</h3>
+                <p>Amazing win</p>
+                <a href="#">Watch Highlights</a>
+            </div>
+            <div class="project-card">
+                <img src="assets/race-win-2.jpg" alt="Race Win 2">
+                <h3>Monaco GP 2024</h3>
+                <p>Home win</p>
+                <a href="#">Watch Highlights</a>
+            </div>
+            <div class="project-card">
+                <img src="assets/race-win-3.jpg" alt="Race Win 3">
+                <h3>Monza GP 2024</h3>
+                <p>Scuderia Ferrari</p>
+                <a href="#">Watch Highlights</a>
+            </div>
+            <!-- Tambahkan project-card lebih banyak sesuai kebutuhan -->
+        </section>
+    </main>
 </body>
 </html>
