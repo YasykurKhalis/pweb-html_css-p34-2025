@@ -1,6 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/milker" rel="stylesheet">
+    <style>
+        :root {
+            --background: #e9ecef;
+            --text: #111b29;
+            --accent-1: #111b29;
+            --accent-2: #f8f9fa;
+            --accent-3: #D62929;
+            --font-size: 18px;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: var(--background);
+            color: var(--text);
+        }
+        
+        /* == HEADER == */
+        .header {
+            height: 72px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 16px;
+            padding: 0 24px;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .header-title {
+            font-size: var(--font-size);
+            font-weight: 800;
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-self: end;
+            background: var(--accent-2);
+            padding: 6px 6px;
+            border-radius: 12px;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .navigation a {
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--accent-1);
+            font-size: 14px;
+            position: relative;
+            padding: 2px 12px;
+            border-radius: 6px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .navigation a[aria-current="page"] {
+            background: var(--accent-3);
+            color: var(--accent-2);
+        }
+
+        .navigation-dropdown-toggle {
+            display: none;
+        }
+
+        .navigation-hamburger {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.3s ease;
+            color: var(--accent-1);
+            grid-column: 3;
+            justify-self: end;
+            align-self: center;
+        }
+
+        /* == BANNER == */
+        .banner {
+            display: grid;
+            grid-template-columns: 1.75fr 0.75fr;
+            background-color: var(--accent-3);
+            border-radius: 16px;
+            margin: 24px;
+            max-height: 360px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        .banner-text {
+            padding: 40px;
+        }
+
+        .banner-title {
+            font-family: 'Milker', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--accent-2);
+            margin-bottom: 12px;
+        }
+
+        .banner-description {
+            font-size: 18px;
+            line-height: 1.5;
+            color: var(--accent-2);
+            margin-bottom: 20px;
+            max-width: 100%;
+            text-align: justify;
+        }
+
+        .banner-button {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 12px;
+            background: var(--accent-2);
+            color: var(--accent-3);
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s, color 0.3s;
+            font-size: 14px;
+        }
+
+        .banner-image {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .banner-image img {
+            max-width: 100%;
+            height: auto;
+            position: relative;
+            top: 5px;
+            bottom: 0;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease-out forwards;
+        }
+
+        /* == PORTOFOLIO == */
+        .portofolio {
+            margin: 36px 24px;
+        }
+
+        .portofolio-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+
+        .portofolio-text {
+            text-align: justify;
+        }
+
+        .portofolio-title {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .portofolio-description {
+            font-size: 16px;
+            margin-bottom: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--text);
+        }
+
+        .portofolio-button {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 12px;
+            background: var(--accent-3);
+            color: var(--accent-2);
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s, color 0.3s;
+            font-size: 12px;
+        }
+
+        .portofolio-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .portofolio-image-large {
+            grid-row: span 2;
+            background: var(--accent-2);
+            border-radius: 16px;
+            max-height: 320px;
+        }
+
+        .portofolio-image-small {
+            background: var(--accent-2);
+            border-radius: 16px;
+            max-height: 150px;
+            gap: 20px;
+        }
+
+        .portofolio-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+            display: block;
+        }
+
+        /* == RESPONSIVE */
+        @media (max-width: 480px) {
+            :root {
+                --font-size: 14px;
+            }
+            .header {
+                height: auto;
+                grid-template-columns: 1fr;
+                padding: 12px;
+                gap: 8px;
+            }
+            .banner {
+                display: flex;
+                flex-direction: column;
+                grid-template-columns: none;
+                max-height: none;
+                margin: 12px;
+                border-radius: 12px;
+            }
+            .banner-text {
+                padding: 24px;
+            }
+            .banner-title {
+                font-size: 32px;
+            }
+            .banner-description {
+                font-size: 12px;
+                margin-bottom: 14px;
+            }
+            .banner-button {
+                font-size: 12px;
+                padding: 6px 12px;
+                border-radius: 10px;
+            }
+        }
+        @media (max-width: 600px) {
+            :root {
+                --font-size: 15px;
+            }
+            
+            .navigation {
+                display: none;
+                flex-direction: column;
+                background: var(--accent-2);
+                padding: 10px;
+                border-radius: 12px;
+                position: absolute;
+                top: 60px;
+                right: 12px;
+                width: 120px;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+                z-index: 1;
+            }
+
+            .navigation a {
+                display: block;
+                padding: 4px 12px;
+                width: 100%;
+            }
+
+            .navigation-hamburger {
+                display: block;
+                justify-self: end;
+            }
+
+            .navigation-dropdown-toggle:checked + .navigation-hamburger + .navigation {
+                display: flex;
+                animation: fadeIn 0.3s ease-in-out;
+            }
+
+            .navigation-dropdown-toggle:checked + .navigation-hamburger {
+                color: var(--accent-3);
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+            :root {
+                --font-size: 16px;
+            }
+            .header {
+                height: 64px;
+                padding: 0 16px;
+                gap: 12px;
+            }
+            .navigation a {
+                padding: 4px 10px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            :root {
+                --font-size: 17px;
+            }
+            .header {
+                height: 68px;
+                padding: 0 20px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-title">
+            Pemweb Kelompok P34
+        </div>
+
+        <input type="checkbox" id="navigation-dropdown-toggle" class="navigation-dropdown-toggle">
+        <label for="navigation-dropdown-toggle" class="navigation-hamburger">
+            ☰
+        </label>
+
+        <nav class="navigation" aria-label="Primary">
+            <a href="index.html" aria-current="page">Home</a>
+            <a href="portofolio.html">Portofolio</a>
+            <a href="cv.html">CV</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <div class="banner-text">
+            <h2 class="banner-title">
+                Charles Leclerc
+            </h2>
+            <p class="banner-description">
+                Charles Leclerc is a Monégasque racing driver currently competing in Formula One for Scuderia Ferrari.
+            </p>
+            <a href="cv.html" class="banner-button">Read More</a>
+        </div>
+        <div class="banner-image">
+            <img src="assets/charles-leclerc.png" alt="Charles Leclerc">
+        </div>
+    </section>
+    <section class="portofolio">
+        <div class="portofolio-content">
+            <div class="portofolio-text">
+                <h1 class="portofolio-title">
+                    Portofolio
+                </h1>
+                <p class="portofolio-description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+                <a href="portofolio.html" class="portofolio-button">See More</a>
+            </div>
+    
+            <div class="portofolio-images">
+                <div class="portofolio-image-large">
+                    <img src="assets/placeholder.jpg" alt="Portofolio 1">
+                </div>
+                <div class="portofolio-image-small">
+                    <img src="assets/placeholder.jpg" alt="Portofolio 2">
+                </div>
+                <div class="portofolio-image-small">
+                    <img src="assets/placeholder.jpg" alt="Portofolio 3">
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Landing Page</title>
@@ -8,7 +417,7 @@
 </head>
 <body>
 
-  <!-- WELCOME PAGE -->
+  /* == WELCOME PAGE == */
   <section class="welcome">
     <h1>CV orang terkenal</h1>
     <p>info kalau ada ide landing page.</p>
@@ -17,7 +426,7 @@
     </div>
   </section>
 
-  <!-- ANGGOTA 1 -->
+  /* == ANGGOTA 1 == */
   <section id="introduction" class="cv-section">
     <div class="cv-left">
       <img src="assets/anggota1.jpg" alt="Foto Anggota 1">
@@ -47,3 +456,4 @@
 
 </body>
 </html>
+-->
