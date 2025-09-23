@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/milker" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="header.css">
     <style>
         :root {
             --background: #f5f5f5;
@@ -28,6 +27,53 @@
         body {
             background: var(--background);
             color: var(--text);
+        }
+
+        /* == HEADER == */
+        .header {
+            height: 72px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 16px;
+            padding: 0 24px;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .header-title {
+            font-size: var(--font-size);
+            font-weight: 800;
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-self: end;
+            background: var(--accent-2);
+            padding: 6px 6px;
+            border-radius: 12px;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .navigation a {
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--accent-1);
+            font-size: 14px;
+            position: relative;
+            padding: 2px 12px;
+            border-radius: 6px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .navigation a[aria-current="page"] {
+            background: var(--accent-3);
+            color: var(--accent-2);
         }
 
         .cv-section {
